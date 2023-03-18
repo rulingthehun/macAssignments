@@ -1,0 +1,107 @@
+1-
+
+String array oluşturun ve elemanları : Apple , Orange , Banana , Pineapple
+
+Apple elemanının bu Array'a ait olup olmadığını kontrol edin.
+
+Eğer aitse "true" çevirin.
+
+
+
+2-
+
+int Array oluşturun ve elemanları : 12,2,5,15,8
+
+En büyük değeri yazdırınız.
+
+
+
+3-
+
+int Array oluşturun ve elemanları : 14 , 19 , 5 , 21
+
+En küçük (minimum) sayıyı yazdırınız.
+
+
+
+4-
+
+int Array oluşturun ve elemanları : 15 , 25, 22, 18, 30
+
+Arraydaki en büyük 2. elemanı yazdıran bir program yazın.
+
+
+
+5-
+
+int Array oluşturun ve elemanları : 5,6,8,12,14,19
+
+Eğer sayı çiftse topla, tekse çıkar.
+
+**Örneğin:**
+
+ **-5 + 6 + 8 + 12 + 14 - 19 = 16**
+
+Toplamlarını yazdırın.
+
+
+
+7-
+
+Oluşturacağınız int array'ini, length'i(eleman sayısı) 2 olan ve int array'inin(ilk oluşturduğunuz array) ilk
+ve son elementlerini kapsayan yeni array'e return edin.
+
+
+
+ Oluşturacağınız int array'i =   ([1, 2, 3, 4])
+
+Sonuç bu şekilde olmalıdır. [1, 4]
+
+
+
+8-
+
+int Array oluşturun ve elemanları : 12, 14 , 21 ,23 , 10 ,4
+
+Array'in ortalamasını alınız.
+
+
+
+9-
+
+String Array (Dizi) oluşturunuz.
+
+ elemanları : Apple, Orange , Babana, Kiwi
+
+Array'leri tüm elemanları yazdırınız.
+
+
+
+10-
+
+String array  oluşturun ve elemanları: "new jersey" , "new york", "boston","California"
+
+Array'daki eleman sayısını yazdırınız.
+
+Cevap 4 olmalı.
+
+
+
+11-
+
+İnt Array oluştur ve elemanları   : 25,30,30,35,100
+
+Array in elemanlarının toplamını yazdır.
+
+Cevap 220 olmalı.
+
+
+
+12-- Kullanıcıdan alacağınız 5 ayrı kelimeyi bir diziye atayınız,
+/Kelimelerden en uzun olanının ilk ve son harfininin yerlerini değiştiriniz.
+
+13: Kullanıcıdan alacağınız 10 elemanlı bir diziyi doldurduktan sonra,
+ayrı bir döngüde en büyük ve en küçük rakamın farkını bulunuz.
+
+14: Kullanıcıdan alacağınız 10 elemanlı bir diziyi doldurduktan sonra,
+ayrı bir döngüde çift rakam sayısını bulunuz ve yazdırınız

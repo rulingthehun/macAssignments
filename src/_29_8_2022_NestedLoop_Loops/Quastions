@@ -1,0 +1,31 @@
+Özel sorular
+
+1- Girilen bir sayının simetrik sayı (12321, 55555, 45554, 11611,77377)
+sayı olup olmadığını bulunuz
+
+2- Aşağıdaki do-while döngüsüne denk  while döngüsü hangisidir?
+
+do {
+  x = x + y;
+} while (x < z);
+
+
+
+3. Aşağıdaki for döngüsüne denk while döngüsü hangisidir?  (başlangıçta toplam=0 varsayın)
+
+for (i = 1; i <= 100; i = i + 1)
+    toplam = toplam + i;
+
+4- Aşağıdaki çıktıyı veren programı yazınız
+     *****
+      ****
+       ***
+        **
+         *
+
+5- Aşağıdaki çıktıyı veren programı yazınız
+     **********
+      ********
+       ******
+        ****
+         **
