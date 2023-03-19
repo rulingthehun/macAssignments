@@ -22,13 +22,13 @@ public class dragCapitals extends BaseDriverFirefox {
 
         for (WebElement e : cities) {
             for (WebElement d : destBox) {
-                actions.clickAndHold(e).perform();
-                actions.moveToElement(d) .release().perform();
+                actions.dragAndDrop(e, d).build().perform();
                 if (e.getAttribute("class").equals("correctAnswer"))
                     break;
             }
         }
 
+        MyFunc.Bekle(3);
         driverStop();
     }
 }
