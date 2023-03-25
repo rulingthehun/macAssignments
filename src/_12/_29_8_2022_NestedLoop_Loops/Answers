@@ -1,0 +1,115 @@
+public class Q1 {
+    //    1- Girilen bir sayının simetrik sayı (12321, 55555, 45554, 11611,77377)
+//    sayı olup olmadığını bulunuz
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter number = ");
+        String num = scan.next();
+        String firstPart = "";
+        if (num.length() % 2 == 0)
+            firstPart = num.substring(0, num.length() / 2);
+        else
+            firstPart = num.substring(0, num.length() / 2 + 1);
+        String lastPart = num.substring(num.length() / 2);
+        int intFirstPart = Integer.parseInt(firstPart);
+        int intLastPart = Integer.parseInt(lastPart);
+        int reverseLastPart = 0;
+        for (int i = intLastPart; i > 0; i /= 10) {
+            int digit = i % 10;
+            reverseLastPart = reverseLastPart * 10 + digit;
+        }
+        if (intFirstPart == reverseLastPart)
+            System.out.println("Numbers are symmetrical");
+        else
+            System.out.println("Numbers are not symmetrical");
+    }
+}
+
+public class Q2 {
+    /*
+                  2- Aşağıdaki do-while döngüsüne denk  while döngüsü hangisidir?
+
+              do {
+                x = x + y;
+              } while (x < z);
+     */
+    public static void main(String[] args) {
+        int x = 12;
+        int y = 1;
+        int z = 16;
+        do {
+            x += y;
+            System.out.println("x = " + x);
+        } while (x < z);
+        x = 12;
+        while (x < z){
+            x += y;
+            System.out.println("2.x = " + x);
+        }
+
+    }
+}
+
+public class Q3 {
+    /*
+                   3. Aşağıdaki for döngüsüne denk while döngüsü hangisidir?  (başlangıçta toplam=0 varsayın)
+
+               for (i = 1; i <= 100; i = i + 1)
+                   toplam = toplam + i;
+     */
+    public static void main(String[] args) {
+        int toplam = 0;
+        int i = 0;
+        for (i = 1; i <= 100; i = i + 1)
+            toplam = toplam + i;
+        System.out.println("toplam = " + toplam);
+        toplam = 0;
+        i = 0;
+        while (i <= 100) {
+            toplam += i;
+            i++;
+        }
+        System.out.println("toplam = " + toplam);
+    }
+}
+
+public class Q4 {
+    /*
+         4- Aşağıdaki çıktıyı veren programı yazınız
+          *****
+           ****
+            ***
+             **
+              *
+     */
+    public static void main(String[] args) {
+        for (int i = 5; i > 0; i--) {
+            for (int j = i; j < 5; j++)
+                System.out.print(" ");
+            for (int k = 1; k <= i; k++)
+                System.out.print("*");
+            System.out.println();
+        }
+        System.out.print("---------------");
+    }
+}
+
+public class Q5 {
+    /*
+           5- Aşağıdaki çıktıyı veren programı yazınız
+            **********
+             ********
+              ******
+               ****
+                **
+     */
+    public static void main(String[] args) {
+        for (int i = 5; i > 0; i--) {
+            for (int j = i; j < 10; j++)
+                System.out.print(" ");
+            for (int k = 0; k < i; k++)
+                System.out.print("**");
+            System.out.println(" ");
+        }
+    }
+}

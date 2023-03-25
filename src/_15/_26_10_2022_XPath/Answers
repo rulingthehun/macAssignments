@@ -1,0 +1,204 @@
+public class Q1 extends BaseDriverEdge {
+    /*
+
+1) Bu siteye gidin. ->  http://demoqa.com/text-box
+
+2) Full Name kısmına "Automation" girin.
+
+3) Email kısmına "testing@gmail.com" girin.
+
+4) Current Address kısmına "Testing Current Address" girin.
+
+5) Permanent Address kısmına "Testing Permanent Address" girin.
+
+6) Submit butonuna tıklayınız.
+
+7) Full Name'in, "Automation"ı içinde bulundurduğunu doğrulayın.
+
+8) Email'in, "Testing"ı içinde bulundurduğunu doğrulayın.
+
+*/
+    @Test
+    public void Test(){
+        driver.get("https://demoqa.com/text-box");
+
+        WebElement fullName = driver.findElement(By.xpath("//input[@id='userName']"));
+        fullName.sendKeys("Automation");
+
+        WebElement userEmail = driver.findElement(By.xpath("//input[@id='userEmail']"));
+        userEmail.sendKeys("testing@gmail.com");
+
+        WebElement currentAddress = driver.findElement(By.xpath("//textarea[@id='currentAddress']"));
+        currentAddress.sendKeys("Testing Current Address");
+
+        WebElement permanentAddress = driver.findElement(By.xpath("//textarea[@id='permanentAddress']"));
+        permanentAddress.sendKeys("Testing Permanent Address");
+
+        WebElement button = driver.findElement(By.xpath("//button[@id='submit']"));
+        button.click();
+
+        new Actions(driver).scrollByAmount(0, 500).build().perform();
+
+        WebElement name = driver.findElement(By.xpath("//p[@id='name']"));
+        Assert.assertTrue("Wrong enter", name.getText().contains("Automation"));
+
+        WebElement email = driver.findElement(By.xpath("//p[@id='email']"));
+        Assert.assertTrue("Wrong enter", email.getText().contains("testing"));
+
+        driverStop();
+
+    }
+}
+
+public class Q2 extends BaseDriverEdge {
+    /*
+             2-
+         1) Bu siteye gidin. -> https://demo.applitools.com/
+
+         2) Username kısmına "ttechno@gmail.com" girin.
+
+         3) Password kısmına "techno123." girin.
+
+         4) "Sign in" buttonunan tıklayınız.
+
+         5) "Your nearest branch closes in: 30m 5s" yazısının göründüğünü doğrulayınız.
+
+     */
+    @Test
+    public void Test(){
+        driver.get("https://demo.applitools.com/");
+
+        WebElement username = driver.findElement(By.xpath("//input[@id='username']"));
+        username.sendKeys("ttechno@gmail.com");
+
+        WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
+        password.sendKeys("techno123.");
+
+        driver.findElement(By.xpath("//a[@id='log-in']")).click();
+
+        WebElement text = driver.findElement(By.xpath("//h6[text()='Your nearest branch closes in: 30m 5s']"));
+        Assert.assertTrue("Wrong enter", text.getText().contains("Your nearest branch closes in: 30m 5s"));
+
+        driverStop();
+    }
+}
+
+public class Q3 extends BaseDriverEdge {
+    /*
+            3-
+        1) Bu siteye gidin. -> https://www.snapdeal.com/
+
+        2) "teddy bear" aratın ve  Search butonuna tıklayın.
+
+        3) Bu yazının göründüğünü doğrulayınız. -> (We've got 297 results for 'teddy bear')
+        Not: Bu yazıdaki sayı değişiklik gösterebilir. Önemli olan cümle kalıbı.
+     */
+    @Test
+    public void Test(){
+        driver.get("https://www.snapdeal.com/");
+
+        WebElement inputValEnter = driver.findElement(By.xpath("//input[@id='inputValEnter']"));
+        inputValEnter.sendKeys("teddy bear");
+
+        driver.findElement(By.xpath("//button[@class='searchformButton col-xs-4 rippleGrey']")).click();
+
+        WebElement searchMessage = driver.findElement(By.xpath("//div[@id='searchMessageContainer']//div[@class]"));
+        Assert.assertTrue("Wrong enter", searchMessage.getText().contains(" results for teddy bear"));
+
+        driverStop();
+    }
+}
+
+public class Q4 extends BaseDriverEdge {
+    /*
+        4-
+
+           Bu websitesine gidiniz.  [https://testpages.herokuapp.com/styled/index.html]
+
+           Calculate'e tıklayınız.
+
+           İlk input'a herhangi bir sayı giriniz.
+
+           İkinci input'a herhangi bir sayı giriniz.
+
+           Calculate button'una tıklayınız.
+
+           Sonucu alınız.
+
+           Sonucu yazdırınız.
+     */
+    @Test
+    public void Test(){
+        driver.get("https://testpages.herokuapp.com/styled/index.html");
+        new Actions(driver).scrollByAmount(0, 2000).build().perform();
+        driver.findElement(By.xpath("//a[text()='Calculate']")).click();
+
+        WebElement number1 = driver.findElement(By.xpath("//input[@id='number1']"));
+        number1.sendKeys("370");
+        WebElement number2 = driver.findElement(By.xpath("//input[@id='number2']"));
+        number2.sendKeys("88");
+
+        driver.findElement(By.xpath("//input[@id='calculate']")).click();
+
+        WebElement answer = driver.findElement(By.xpath("//span[@id='answer']"));
+        System.out.println("Answer = " + answer.getText());
+
+        driverStop();
+    }
+}
+
+public class Q5 extends BaseDriverEdge {
+    /*
+                5-
+
+            Bu websitesine gidiniz.  [https://testpages.herokuapp.com/styled/index.html]
+
+            Fake Alerts' tıklayınız.
+
+            Show Alert Box'a tıklayınız.
+
+            Ok'a tıklayınız.
+
+            Alert kapanmalıdır.
+     */
+    @Test
+    public void Test(){
+        driver.get("https://testpages.herokuapp.com/styled/index.html");
+
+        driver.findElement(By.xpath("//a[@id='fakealerttest']")).click();
+        driver.findElement(By.xpath("//input[@id='fakealert']")).click();
+        MyFunc.Bekle(1.5);
+        driver.findElement(By.xpath("//button[@id='dialog-ok']")).click();
+        //new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
+        //driver.switchTo().alert().accept();
+
+        driverStop();
+
+    }
+}
+
+public class Q6 extends BaseDriverEdge {
+    /*
+                 6-
+
+             Bu siteye gidiniz.  https://testpages.herokuapp.com/styled/index.html
+
+             Fake Alerts'e tıklayınız.
+
+             Show modal dialog buttonuna tıklayınız.
+
+             Ok'a tıklayınız.
+
+             Alert kapanmalıdır.
+     */
+    @Test
+    public void Test(){
+        driver.get("https://testpages.herokuapp.com/styled/index.html");
+                driver.findElement(By.xpath("//a[@id='fakealerttest']")).click();
+                driver.findElement(By.xpath("//input[@id='fakealert']")).click();
+                MyFunc.Bekle(1.5);
+                driver.findElement(By.xpath("//button[@id='dialog-ok']")).click();
+
+        driverStop();
+    }
+}

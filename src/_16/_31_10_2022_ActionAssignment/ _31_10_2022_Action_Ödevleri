@@ -1,0 +1,80 @@
+---Ödev 1 : http://dhtmlgoodies.com/scripts/drag-drop-quiz/drag-drop-quiz-d2.html
+         buradaki ülke ve şehirleri findElements ile topluca bularak bir döngü ile bütün şehirleri doğru ülkere dağıtınız.
+
+         public class dragCapitals extends BaseDriverFirefox {
+             @Test
+             public void Test(){
+                 driver.get("http://dhtmlgoodies.com/scripts/drag-drop-quiz/drag-drop-quiz-d2.html");
+                 driver.manage().deleteAllCookies();
+
+                 Actions actions = new Actions(driver);
+
+                 MyFunc.Bekle(0.5);
+                 List<WebElement> cities = driver.findElements(By.cssSelector("div[id='answerDiv']>div"));
+                 List<WebElement> destBox = driver.findElements(By.cssSelector("div[id='questionDiv']>div[class='destinationBox']"));
+
+                 for (WebElement e : cities) {
+                     for (WebElement d : destBox) {
+                         actions.dragAndDrop(e, d).build().perform();
+                         if (e.getAttribute("class").equals("correctAnswer"))
+                             break;
+                     }
+                 }
+
+                 MyFunc.Bekle(3);
+                 driverStop();
+             }
+         }
+
+---Ödev 2 : http://dhtmlgoodies.com/scripts/drag-drop-nodes/drag-drop-nodes.html
+            buradaki bütün öğrencileri bütün kutucukları doldurana kadar atınız.
+
+            public class students extends BaseDriverFirefox {
+                @Test
+                public void Test(){
+                    driver.get("http://dhtmlgoodies.com/scripts/drag-drop-nodes/drag-drop-nodes.html");
+                    driver.manage().deleteAllCookies();
+                    Actions actions = new Actions(driver);
+
+                    List<WebElement> students = driver.findElements(By.cssSelector("ul[id='allItems']>*"));
+                    List<WebElement> boxes = driver.findElements(By.cssSelector("div[id='dhtmlgoodies_mainContainer']>*"));
+
+                    for (WebElement e : students)
+                        for (WebElement b : boxes)
+                            actions.dragAndDrop(e, b).build().perform();
+                    driverStop();
+                }
+            }
+
+---Ödev 3: http://dhtmlgoodies.com/scripts/drag-drop-nodes-quiz/drag-drop-nodes-quiz.html
+            buradaki bütün şehirleri bütün ülkere doğru şekilde topluca dağıtınız.
+
+            public class dragCities extends BaseDriverFirefox {
+                @Test
+                public void Test() {
+                    Actions actions = new Actions(driver);
+                    driver.get("http://dhtmlgoodies.com/scripts/drag-drop-nodes-quiz/drag-drop-nodes-quiz.html");
+                    driver.manage().deleteAllCookies();
+
+                    List<WebElement> cities = driver.findElements(By.cssSelector("#allItems>li"));
+                    List<WebElement> boxes = driver.findElements(By.cssSelector("[id^='box']"));
+                    List<WebElement> boxes = driver.findElements(By.cssSelector("[id^='box']"));
+
+                    for (WebElement e : cities) {
+                        String groupId = e.getAttribute("groupid");
+                        switch (groupId) {
+                            case "box1" : actions.dragAndDrop(e, boxes.get(0)).build().perform(); break;
+                            case "box2" : actions.dragAndDrop(e, boxes.get(1)).build().perform(); break;
+                            case "box3" : actions.dragAndDrop(e, boxes.get(2)).build().perform(); break;
+                            case "box4" : actions.dragAndDrop(e, boxes.get(3)).build().perform(); break;
+                            case "box5" : actions.dragAndDrop(e, boxes.get(4)).build().perform(); break;
+                            case "box6" : actions.dragAndDrop(e, boxes.get(5)).build().perform(); break;
+                            case "box7" : actions.dragAndDrop(e, boxes.get(6)).build().perform(); break;
+                        }
+                    }
+                    driver.switchTo().alert().accept();
+                    MyFunc.Bekle(3.2);
+                    driverStop();
+                }
+            }
+            }
