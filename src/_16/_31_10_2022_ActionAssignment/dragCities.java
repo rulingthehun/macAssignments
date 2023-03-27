@@ -1,8 +1,6 @@
 package _16._31_10_2022_ActionAssignment;
 
-import Utility.BaseDriverChrome;
 import Utility.BaseDriverFirefox;
-import Utility.BaseDriverSafari;
 import Utility.MyFunc;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -34,7 +32,7 @@ public class dragCities extends BaseDriverFirefox {
             }
         }
         driver.switchTo().alert().accept();
-        MyFunc.Bekle(3.2);
+        MyFunc.Wait(3.2);
         driverStop();
     }
 }

@@ -16,7 +16,7 @@ public class dragCapitals extends BaseDriverFirefox {
 
         Actions actions = new Actions(driver);
 
-        MyFunc.Bekle(0.5);
+        MyFunc.Wait(0.5);
         List<WebElement> cities = driver.findElements(By.cssSelector("div[id='answerDiv']>div"));
         List<WebElement> destBox = driver.findElements(By.cssSelector("div[id='questionDiv']>div[class='destinationBox']"));
 
@@ -28,7 +28,7 @@ public class dragCapitals extends BaseDriverFirefox {
             }
         }
 
-        MyFunc.Bekle(3);
+        MyFunc.Wait(3);
         driverStop();
     }
 }

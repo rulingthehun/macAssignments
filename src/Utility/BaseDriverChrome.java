@@ -32,7 +32,7 @@ public class BaseDriverChrome {
     }
 
     public static void driverStop(){
-        MyFunc.Bekle(3);
+        MyFunc.Wait(3);
         driver.quit();
     }
 

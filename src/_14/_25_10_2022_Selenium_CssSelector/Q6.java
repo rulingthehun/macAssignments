@@ -4,7 +4,6 @@ import Utility.BaseDriverEdge;
 import Utility.MyFunc;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class Q6 extends BaseDriverEdge {
     /*
@@ -25,7 +24,7 @@ public class Q6 extends BaseDriverEdge {
         driver.get("https://testpages.herokuapp.com/styled/index.html");
         driver.findElement(By.cssSelector("a[id='fakealerttest']")).click();
         driver.findElement(By.cssSelector("input[id='modaldialog']")).click();
-        MyFunc.Bekle(1.5);
+        MyFunc.Wait(1.5);
         driver.findElement(By.cssSelector("button[id='dialog-ok']")).click();
 
         driverStop();

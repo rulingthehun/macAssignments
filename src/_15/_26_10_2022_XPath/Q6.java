@@ -24,7 +24,7 @@ public class Q6 extends BaseDriverEdge {
         driver.get("https://testpages.herokuapp.com/styled/index.html");
         driver.findElement(By.xpath("//a[@id='fakealerttest']")).click();
         driver.findElement(By.xpath("//input[@id='fakealert']")).click();
-        MyFunc.Bekle(1.5);
+        MyFunc.Wait(1.5);
         driver.findElement(By.xpath("//button[@id='dialog-ok']")).click();
 
         driverStop();

@@ -4,10 +4,6 @@ import Utility.BaseDriverEdge;
 import Utility.MyFunc;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class Q5 extends BaseDriverEdge {
     /*
@@ -29,7 +25,7 @@ public class Q5 extends BaseDriverEdge {
 
         driver.findElement(By.cssSelector("a[id='fakealerttest']")).click();
         driver.findElement(By.cssSelector("input[id='fakealert']")).click();
-        MyFunc.Bekle(1.5);
+        MyFunc.Wait(1.5);
         driver.findElement(By.cssSelector("button[id='dialog-ok']")).click();
         //new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
         //driver.switchTo().alert().accept();

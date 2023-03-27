@@ -25,7 +25,7 @@ public class Q5 extends BaseDriverEdge {
 
         driver.findElement(By.xpath("//a[@id='fakealerttest']")).click();
         driver.findElement(By.xpath("//input[@id='fakealert']")).click();
-        MyFunc.Bekle(1.5);
+        MyFunc.Wait(1.5);
         driver.findElement(By.xpath("//button[@id='dialog-ok']")).click();
         //new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
         //driver.switchTo().alert().accept();
