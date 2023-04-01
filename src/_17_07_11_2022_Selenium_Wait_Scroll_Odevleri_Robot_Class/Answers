@@ -84,3 +84,170 @@ public class Q1 extends BaseDriverEdge {
 
     }
 }
+
+public class Q2 extends BaseDriverChrome {
+    /*
+               2-
+           Senaryo
+           1- https://www.youtube.com/ adresine gidiniz
+           2- "Selenium" kelimesi ile video aratınız.
+           3- Listelenen sonuçlarda 80 videoaya kadar lsiteyi uzatınız.
+           4- Son videonun title ını yazdırınız.
+     */
+    @Test
+    public void Test(){
+        driver.get("https://www.youtube.com/");
+        List<WebElement> acceptCookies = driver.findElements(By.xpath("(//*[@class='yt-spec-touch-feedback-shape__fill'])[12]"));
+        if (acceptCookies.size() > 0)
+            acceptCookies.get(0).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        MyFunc.Wait(3.6);
+        WebElement searchButton = driver.findElement(By.cssSelector("input[id='search']"));
+        searchButton.sendKeys("selenium");
+        MyFunc.Wait(1);
+        searchButton.sendKeys(Keys.ENTER);
+
+        MyFunc.Wait(0.6);
+
+        List<WebElement> videos;
+        do {
+            videos = driver.findElements(By.cssSelector("h3[class*='style-scope']>[id='video-title']"));
+            //WebElement theVideo = videos.get(videos.size()-1);
+            //new Actions(driver).scrollToElement(theVideo).build().perform();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0, 3100);");
+        }while (videos.size()<80);
+        MyFunc.Wait(1.6);
+
+        System.out.println("Last video title = " + videos.get((videos.size())-1).getText());
+        driverStop();
+    }
+}
+
+public class Q3 extends BaseDriverChrome {
+    /*
+                3-
+            Senaryo
+            1- google.com ile sayfayı açınız.
+            2- Daha sonra Yeni bir TAB (ctrl+T) açınız.
+            3- Bu açılan yeni sayfada facebook.com u açınız.
+            4- Bu sayfanın açıldığını URL sinden kontrol ediniz.
+            4- Daha sonra facebook.com sayfasını kapatınız.
+     */
+    @Test
+    public void Test() throws AWTException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        driver.get("https://www.google.com/");
+        Robot rbt = new Robot();
+        //For macOS
+        rbt.keyPress(KeyEvent.VK_META);
+        rbt.keyPress(KeyEvent.VK_TAB);
+        rbt.keyRelease(KeyEvent.VK_TAB);
+        MyFunc.Wait(1);
+        rbt.keyRelease(KeyEvent.VK_META);
+
+        rbt.keyPress(KeyEvent.VK_META);
+        rbt.keyPress(KeyEvent.VK_T);
+        rbt.keyRelease(KeyEvent.VK_META);
+        rbt.keyRelease(KeyEvent.VK_T);
+        wait.equals(driver.getWindowHandles().size() == 2);
+        List<String> windowIDs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windowIDs.get(1));
+        driver.get("https://tr-tr.facebook.com/");
+        String url = driver.getCurrentUrl();
+        MyFunc.Wait(2);
+        Assert.assertEquals("https://tr-tr.facebook.com/", url);
+        driver.close();
+        driverStop();
+    }
+}
+
+public class Q4 extends BaseDriverChrome {
+    /*
+                    4-
+             Senaryo
+             1) https://demoqa.com/browser-windows adresine gidin
+             2) Alerts’e tiklayin
+             3) On button click, alert will appear after 5 seconds karsisindaki click me butonuna basin
+             4) Allert’in gorunur olmasini bekleyin
+             5) Allert uzerindeki yazinin “This alert appeared after 5 seconds” oldugunu test edin
+             6) Ok diyerek alerti kapatin
+     */
+    @Test
+    public void Test(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        driver.get("https://demoqa.com/browser-windows");
+        driver.findElement(By.xpath("//span[text()='Alerts']")).click();
+        driver.findElement(By.id("timerAlertButton")).click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = driver.switchTo().alert().getText();
+        Assert.assertEquals("Wrong alert", "This alert appeared after 5 seconds", alertText);
+        driver.switchTo().alert().accept();
+        driverStop();
+    }
+}
+
+public class Q5 extends BaseDriverChrome {
+    /*
+                  5-
+            Senaryo
+            1) https://demoqa.com/dynamic-properties adresine gidin
+            2) “Will enable 5 seconds” butonunun enable olmasini bekleyin
+            3) “Will enable 5 seconds” butonunun enable oldugunu test edin
+     */
+    @Test
+    public void Test(){
+        driver.get("https://demoqa.com/dynamic-properties");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement enableAfterButton = driver.findElement(By.id("enableAfter"));
+        wait.until(ExpectedConditions.elementToBeClickable(enableAfterButton));
+        Assert.assertTrue("Button is not enable", enableAfterButton.isEnabled());
+        driverStop();
+    }
+}
+
+public class Q6 extends BaseDriverChrome {
+    /*
+                6-
+             Senaryo
+             https://demoqa.com/dynamic-properties adresine gidin
+             1) “Visible After 5 seconds” butonunun gorunur olmasini bekleyin
+             2) “Visible After 5 seconds” butonunun gorunur oldugunu test edin
+     */
+    @Test
+    public void Test(){
+        driver.get("https://demoqa.com/dynamic-properties");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement visibleAfter = driver.findElement(By.id("visibleAfter"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("visibleAfter")));
+        Assert.assertTrue("The button is not visible", visibleAfter.isDisplayed());
+        driverStop();
+    }
+}
+
+public class Q7 extends BaseDriverChrome {
+    /*
+                7-Senaryo
+            https://the-internet.herokuapp.com/add_remove_elements/ adresine gidin
+            1) “Add Element” butona basin
+            2) “Delete” butonu gorunur oluncaya kadar bekleyin
+            3) “Delete” butonunun gorunur oldugunu test edin
+            4) Delete butonuna basarak butonu silin
+            5) Delete butonunun gorunmedigini test edin
+     */
+    @Test
+    public void Test() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
+        driver.findElement(By.xpath("//*[text()='Add Element']")).click();
+        List<WebElement> deleteButton = driver.findElements(By.xpath("//*[text()='Delete']"));
+        wait.until(ExpectedConditions.visibilityOf(deleteButton.get(0)));
+        Assert.assertTrue("Delete button is not visible", deleteButton.get(0).isDisplayed());
+        MyFunc.Wait(2);
+        deleteButton.get(0).click();
+        wait.until(ExpectedConditions.invisibilityOf(deleteButton.get(0)));
+        deleteButton.clear();
+        Assert.assertEquals("Delete button is visible", 0, deleteButton.size());
+        driverStop();
+    }
+}

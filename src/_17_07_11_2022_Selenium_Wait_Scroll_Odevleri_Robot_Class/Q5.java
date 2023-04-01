@@ -1,9 +1,16 @@
 package _17_07_11_2022_Selenium_Wait_Scroll_Odevleri_Robot_Class;
 
-import Utility.BaseDriverEdge;
+import Utility.BaseDriverChrome;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Q5 extends BaseDriverEdge {
+import java.time.Duration;
+
+public class Q5 extends BaseDriverChrome {
     /*
                   5-
             Senaryo
@@ -14,7 +21,10 @@ public class Q5 extends BaseDriverEdge {
     @Test
     public void Test(){
         driver.get("https://demoqa.com/dynamic-properties");
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement enableAfterButton = driver.findElement(By.id("enableAfter"));
+        wait.until(ExpectedConditions.elementToBeClickable(enableAfterButton));
+        Assert.assertTrue("Button is not enable", enableAfterButton.isEnabled());
         driverStop();
     }
 }

@@ -1,9 +1,16 @@
 package _17_07_11_2022_Selenium_Wait_Scroll_Odevleri_Robot_Class;
 
+import Utility.BaseDriverChrome;
 import Utility.BaseDriverEdge;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Q4 extends BaseDriverEdge {
+import java.time.Duration;
+
+public class Q4 extends BaseDriverChrome {
     /*
                     4-
              Senaryo
@@ -16,8 +23,14 @@ public class Q4 extends BaseDriverEdge {
      */
     @Test
     public void Test(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.get("https://demoqa.com/browser-windows");
-
+        driver.findElement(By.xpath("//span[text()='Alerts']")).click();
+        driver.findElement(By.id("timerAlertButton")).click();
+        wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = driver.switchTo().alert().getText();
+        Assert.assertEquals("Wrong alert", "This alert appeared after 5 seconds", alertText);
+        driver.switchTo().alert().accept();
         driverStop();
     }
 }
