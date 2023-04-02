@@ -2,8 +2,8 @@ package _14._25_10_2022_Selenium_CssSelector;
 
 import Utility.BaseDriverEdge;
 import Utility.MyFunc;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
 public class Q5 extends BaseDriverEdge {
     /*

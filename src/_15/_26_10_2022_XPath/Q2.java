@@ -2,9 +2,9 @@ package _15._26_10_2022_XPath;
 
 import Utility.BaseDriverEdge;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 public class Q2 extends BaseDriverEdge {
     /*

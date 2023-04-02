@@ -3,8 +3,8 @@ package _17_07_11_2022_Selenium_Wait_Scroll_Odevleri_Robot_Class;
 import Utility.BaseDriverChrome;
 import Utility.MyFunc;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

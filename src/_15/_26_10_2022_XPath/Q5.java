@@ -2,8 +2,8 @@ package _15._26_10_2022_XPath;
 
 import Utility.BaseDriverEdge;
 import Utility.MyFunc;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
 public class Q5 extends BaseDriverEdge {
     /*
